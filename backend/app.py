@@ -5,9 +5,8 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)
 
-# Get the directory where app.py is located
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "model", "model.pkl")
 SCALER_PATH = os.path.join(BASE_DIR, "model", "scaler.pkl")
@@ -22,17 +21,13 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Expect JSON data
         data = request.json
         print(f"Received prediction request: {data}")
         
-        # Calculate BMI (weight in kg / (height in m)^2)
         height_m = float(data.get('height')) / 100
         weight_kg = float(data.get('weight'))
         bmi = weight_kg / (height_m ** 2) if height_m > 0 else 0
         
-        # Extract features in correct order as trained:
-        # age, gender, height, weight, ap_hi, ap_lo, cholesterol, gluc, smoke, alco, active, bmi
         features = [
             float(data.get('age')),
             float(data.get('gender')),
