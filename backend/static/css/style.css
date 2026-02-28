@@ -1,0 +1,144 @@
+ :root {
+     --primary: #6f42c1;
+     --accent: #20c997;
+     --bg-light: #f8f9fa;
+     --bg-dark: #121212;
+     --card-light: #ffffff;
+     --card-dark: #1e1e1e;
+     --text-light: #212529;
+     --text-dark: #f1f1f1;
+ }
+
+ body {
+     font-family: 'Inter', sans-serif;
+     background: linear-gradient(135deg, var(--primary), var(--accent));
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     transition: 0.3s;
+ }
+
+ body.dark {
+     background: linear-gradient(135deg, #000000, #1f1f1f);
+ }
+
+ .app {
+     background: var(--card-light);
+     width: 100%;
+     max-width: 1150px;
+     border-radius: 20px;
+     overflow: hidden;
+     box-shadow: 0 40px 90px rgba(0, 0, 0, .25);
+     display: flex;
+ }
+
+ body.dark .app {
+     background: var(--card-dark);
+ }
+
+ /* LEFT PANEL */
+ .left {
+     background: linear-gradient(180deg, #5f3dc4, #3b2f8c);
+     color: #fff;
+     width: 35%;
+     padding: 45px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     text-align: center;
+ }
+
+ .left img {
+     width: 120px;
+     margin: 0 auto 20px;
+ }
+
+ /* RIGHT PANEL */
+ .right {
+     width: 65%;
+     padding: 45px;
+     background: var(--bg-light);
+ }
+
+ body.dark .right {
+     background: var(--bg-dark);
+     color: var(--text-dark);
+ }
+
+ label {
+     font-weight: 600;
+ }
+
+ .form-control,
+ .form-select {
+     border-radius: 12px;
+     padding: 10px;
+ }
+
+ .btn-submit {
+     background: linear-gradient(135deg, var(--primary), var(--accent));
+     color: white;
+     border: none;
+     padding: 14px;
+     border-radius: 14px;
+     font-weight: 700;
+     width: 100%;
+ }
+
+ /* TOGGLE */
+ .toggle {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     border: 1px solid #ccc;
+     padding: 10px 15px;
+     border-radius: 12px;
+     background: #fff;
+ }
+
+ body.dark .toggle {
+     background: #1e1e1e;
+     border-color: #444;
+ }
+
+ /* DARK MODE SWITCH */
+ .dark-toggle {
+     position: absolute;
+     top: 20px;
+     right: 20px;
+ }
+
+ /* RISK BAR */
+ .risk-box {
+     margin-top: 30px;
+     padding: 20px;
+     border-radius: 16px;
+     background: #fff;
+ }
+
+ body.dark .risk-box {
+     background: #1e1e1e;
+ }
+
+ .progress {
+     height: 24px;
+     border-radius: 12px;
+ }
+
+ .progress-bar {
+     background: linear-gradient(90deg, #20c997, #dc3545);
+     font-weight: 600;
+ }
+
+ /* RESPONSIVE */
+ @media (max-width: 992px) {
+     .app {
+         flex-direction: column;
+     }
+
+     .left,
+     .right {
+         width: 100%;
+     }
+ }
