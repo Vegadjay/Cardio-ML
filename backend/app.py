@@ -24,19 +24,33 @@ def predict():
         data = request.json
         print(f"Received prediction request: {data}")
         
-        height_m = float(data.get('height')) / 100
+        age_years = float(data.get('age')) // 365
+        age_scaled = (age_years - 29) / (64 - 29)
+
+        height_raw = float(data.get('height'))
+        height_scaled = (height_raw - 55) / (250 - 55)
+
         weight_kg = float(data.get('weight'))
+        weight_scaled = (weight_kg - 10.0) / (200.0 - 10.0)
+
+        height_m = height_raw / 100
         bmi = weight_kg / (height_m ** 2) if height_m > 0 else 0
+
+        ap_hi_scaled = (float(data.get('ap_hi')) - (-150)) / (16020 - (-150))
+        ap_lo_scaled = (float(data.get('ap_lo')) - (-70)) / (11000 - (-70))
         
+        cholesterol_scaled = (float(data.get('cholesterol')) - 1) / 2
+        gluc_scaled = (float(data.get('gluc')) - 1) / 2
+
         features = [
-            float(data.get('age')),
+            age_scaled,
             float(data.get('gender')),
-            float(data.get('height')),
-            float(data.get('weight')),
-            float(data.get('ap_hi')),
-            float(data.get('ap_lo')),
-            float(data.get('cholesterol')),
-            float(data.get('gluc')),
+            height_scaled,
+            weight_scaled,
+            ap_hi_scaled,
+            ap_lo_scaled,
+            cholesterol_scaled,
+            gluc_scaled,
             float(data.get('smoke')),
             float(data.get('alco')),
             float(data.get('active')),
