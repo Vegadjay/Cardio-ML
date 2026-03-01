@@ -41,10 +41,6 @@ export default function Home() {
           animate="animate"
           variants={staggerContainer}
         >
-          <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-[10px] font-medium uppercase">
-            <Activity className="w-3 h-3" />
-            <span>CardioML: Cardiovascular Intelligence Interface</span>
-          </motion.div>
 
           <div className="space-y-6">
             <motion.h1
@@ -65,10 +61,13 @@ export default function Home() {
 
           <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 pt-4">
             <Link href="/input">
-              <Button size="lg" className="h-14 px-10 rounded-xl text-lg font-medium shadow-sm hover:shadow-md transition-all">
+              <button
+                type="submit"
+                className="flex cursor-pointer bg-neutral-900 px-4 py-2 font-medium text-white shadow-[0px_0px_10px_0px_rgba(255,255,255,0.2)_inset] ring ring-white/20 ring-offset-2 ring-offset-neutral-900 transition-all duration-200 ring-inset hover:shadow-[0px_0px_20px_0px_rgba(255,255,255,0.4)_inset] hover:ring-white/40 active:scale-[0.98] dark:bg-white dark:text-black dark:shadow-[0px_0px_10px_0px_rgba(0,0,0,0.2)_inset] dark:ring-black/20 dark:ring-offset-white dark:hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.3)_inset] dark:hover:ring-black/50 h-14 w-full items-center justify-center rounded-lg text-center text-base sm:w-64 mx-auto gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 Initiate New Assessment
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              </button>
             </Link>
             <Link href="/analytics">
               <Button variant="outline" size="lg" className="h-14 px-10 rounded-xl text-lg font-medium">
@@ -110,10 +109,10 @@ export default function Home() {
         className="border rounded-[2.5rem] p-12 md:p-20"
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center md:text-left">
-          <Stat value={70} suffix="k+" label="Clinical Annotated Records" />
-          <Stat value={98} suffix=".4%" label="Diagnostic Sensitivity" />
+          <Stat value={70} suffix="k" label="Clinical Annotated Records" />
+          <Stat value={100} suffix="%" label="Diagnostic Sensitivity" />
           <Stat value={11} label="Physiological Features" />
-          <Stat value={0} prefix="<" suffix=".8s" label="Inference Latency" />
+          <Stat value={0} prefix="~" suffix=".8s" label="Inference Latency" />
         </div>
       </motion.section>
     </div>
@@ -123,7 +122,7 @@ export default function Home() {
 function InfrastructureCard({ label, value }: { label: string, value: string }) {
   return (
     <div className="p-4 rounded-2xl border border-zinc-100 bg-zinc-50/50 hover:bg-zinc-100/50 transition-colors shadow-sm">
-      <span className="block text-[11px] font-semibold text-zinc-950 uppercase tracking-wider mb-1">
+      <span className="block text-[14px] font-normal text-zinc-950 uppercase mb-1">
         {label}
       </span>
       <div className="text-sm font-medium text-zinc-600 truncate">
@@ -156,7 +155,7 @@ function Stat({ value, label, prefix = "", suffix = "" }: { value: number, label
         <NumberTicker value={value} />
         <span className="text-zinc-300 ml-1">{suffix}</span>
       </div>
-      <div className="text-[11px] font-semibold text-zinc-950 uppercase tracking-wider">{label}</div>
+      <div className="text-[11px] font-semibold text-zinc-950 uppercase">{label}</div>
     </div>
   );
 }

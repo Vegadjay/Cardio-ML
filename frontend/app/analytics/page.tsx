@@ -28,12 +28,10 @@ import {
 } from "recharts";
 
 const data = [
-    { name: "Jan", accuracy: 94.2, records: 4500 },
-    { name: "Feb", accuracy: 95.8, records: 5200 },
-    { name: "Mar", accuracy: 95.1, records: 4800 },
-    { name: "Apr", accuracy: 97.4, records: 6100 },
-    { name: "May", accuracy: 98.2, records: 5900 },
-    { name: "Jun", accuracy: 98.4, records: 7200 },
+    { name: "<40", cardioRisk: 22.8, records: 3408 },
+    { name: "40-49", cardioRisk: 39.3, records: 21220 },
+    { name: "50-59", cardioRisk: 53.4, records: 35525 },
+    { name: "60+", cardioRisk: 69.8, records: 9847 },
 ];
 
 const Analytics = () => {
@@ -46,7 +44,7 @@ const Analytics = () => {
             {/* Clinical Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-100 pb-12">
                 <div className="space-y-4">
-                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[10px] font-bold uppercase">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[10px] uppercase">
                         System Performance
                     </div>
                     <div className="space-y-1">
@@ -54,7 +52,7 @@ const Analytics = () => {
                         <p className="text-zinc-500 text-lg">Historical model performance and longitudinal data distribution metrics.</p>
                     </div>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-amber-600 text-[10px] font-bold uppercase">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-amber-600 text-[10px] uppercase">
                     <BrainCircuit className="w-3.5 h-3.5 text-amber-700" />
                     XGBoost Ensemble Active
                 </div>
@@ -62,10 +60,10 @@ const Analytics = () => {
 
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <MetricCard title="Model Sensitivity" value="98.4%" trend="+2.1%" positive={true} icon={BrainCircuit} />
-                <MetricCard title="Clinical Record Volume" value="70,000" trend="+12%" positive={true} icon={Activity} />
-                <MetricCard title="Assay Validation" value="512k" trend="+5.4k" positive={true} icon={Users} />
-                <MetricCard title="Mean Latency" value="0.8s" trend="-0.2s" positive={true} icon={TrendingUp} />
+                <MetricCard title="Model Sensitivity" value="100%" trend="Recall" positive={true} icon={BrainCircuit} />
+                <MetricCard title="Clinical Record Volume" value="70,000" trend="Dataset size" positive={true} icon={Activity} />
+                <MetricCard title="Features Evaluated" value="11" trend="Per record" positive={true} icon={Users} />
+                <MetricCard title="Mean Latency" value="~0.8s" trend="Real-time" positive={true} icon={TrendingUp} />
             </div>
 
             {/* Expansive Charts Section */}
@@ -74,11 +72,11 @@ const Analytics = () => {
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                             <div className="w-8 h-8 bg-zinc-50 rounded-lg flex items-center justify-center border border-zinc-100 italic font-serif text-sm">λ</div>
-                            <h2 className="text-2xl font-medium">Diagnostic Serialization Trends</h2>
+                            <h2 className="text-2xl font-medium">Cardiovascular Risk by Age</h2>
                         </div>
-                        <div className="flex items-center gap-4 text-[10px] font-bold uppercase text-zinc-400">
-                            <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-zinc-100" /> Log-Loss Recovery</span>
-                            <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-zinc-200" /> Sensitivity Threshold</span>
+                        <div className="flex items-center gap-4 text-[10px] uppercase text-zinc-400">
+                            <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-zinc-100" /> Average % Risk</span>
+                            <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-zinc-200" /> Age Group</span>
                         </div>
                     </div>
                     <div className="h-[450px] w-full border border-zinc-200 rounded-3xl p-8 bg-white shadow-sm hover:border-zinc-300 transition-all">
@@ -98,7 +96,7 @@ const Analytics = () => {
                                     itemStyle={{ fontSize: "12px", fontWeight: "600", color: "#18181b" }}
                                     labelStyle={{ fontSize: "10px", fontWeight: "800", textTransform: "uppercase", color: "#a1a1aa", marginBottom: "4px" }}
                                 />
-                                <Area type="monotone" dataKey="accuracy" stroke="#09090b" strokeWidth={2.5} fillOpacity={1} fill="url(#colorAcc)" animationDuration={2000} />
+                                <Area type="monotone" dataKey="cardioRisk" stroke="#09090b" strokeWidth={2.5} fillOpacity={1} fill="url(#colorAcc)" animationDuration={2000} />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
@@ -121,7 +119,7 @@ const Analytics = () => {
                                     itemStyle={{ fontSize: "12px", fontWeight: "600", color: "#18181b" }}
                                     labelStyle={{ fontSize: "10px", fontWeight: "800", textTransform: "uppercase", color: "#a1a1aa", marginBottom: "4px" }}
                                 />
-                                <Bar dataKey="records" fill="#09090b" radius={[4, 4, 0, 0]} barSize={50} animationDuration={2000} />
+                                <Bar dataKey="records" fill="#09090b" radius={[4, 4, 0, 0]} barSize={200} animationDuration={2000} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -140,19 +138,19 @@ function MetricCard({ title, value, trend, positive, icon: Icon }: { title: stri
                         <Icon className="w-5 h-5" strokeWidth={1.5} />
                     </div>
                     {positive ? (
-                        <div className="flex items-center text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100/50">
+                        <div className="flex items-center text-[13px] text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100/50">
                             <ArrowUpRight className="w-3 h-3 mr-1" />
                             {trend}
                         </div>
                     ) : (
-                        <div className="flex items-center text-[10px] font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-full border border-red-100/50">
+                        <div className="flex items-center text-[13px] text-red-600 bg-red-50 px-2.5 py-1 rounded-full border border-red-100/50">
                             <ArrowDownRight className="w-3 h-3 mr-1" />
                             {trend}
                         </div>
                     )}
                 </div>
                 <div className="space-y-1">
-                    <p className="text-[10px] font-bold text-zinc-400 uppercase">{title}</p>
+                    <p className="text-[10px] text-zinc-400 uppercase">{title}</p>
                     <p className="text-3xl font-medium text-zinc-950">{value}</p>
                 </div>
             </div>

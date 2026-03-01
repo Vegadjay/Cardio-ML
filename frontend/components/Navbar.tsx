@@ -25,7 +25,7 @@ const Navbar = () => {
                     <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center text-amber-900 group-hover:bg-amber-200 transition-colors">
                         <HeartPulse className="w-5 h-5" />
                     </div>
-                    <span className="font-medium text-zinc-950">CardioML</span>
+                    <span className="font-medium text-xl text-zinc-950">CardioML</span>
                 </Link>
 
                 <div className="flex items-center gap-8">

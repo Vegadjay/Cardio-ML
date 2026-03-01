@@ -53,7 +53,7 @@ const PredictionResult = () => {
             {/* Clinical Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-zinc-100 pb-12">
                 <div className="space-y-4">
-                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[11px] font-semibold uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[11px] font-semibold uppercase">
                         Diagnostic Assessment
                     </div>
                     <div className="space-y-1">
@@ -107,7 +107,7 @@ const PredictionResult = () => {
                                     <span className="text-7xl font-medium text-zinc-950">
                                         <NumberTicker value={probability} />%
                                     </span>
-                                    <span className="text-[11px] font-semibold uppercase text-zinc-950 mt-2 tracking-wider">Baseline Risk Score</span>
+                                    <span className="text-[11px] font-semibold uppercase text-zinc-950 mt-2">Baseline Risk Score</span>
                                 </div>
                             </div>
 
@@ -127,20 +127,20 @@ const PredictionResult = () => {
 
                     <div className="p-8 rounded-2xl bg-amber-50/50 border border-zinc-200 text-zinc-950 space-y-6 shadow-sm">
                         <div className="flex items-center justify-between border-b border-zinc-200 pb-4">
-                            <span className="text-[11px] font-semibold uppercase text-zinc-950 tracking-wider">Patient Serial</span>
+                            <span className="text-[11px] font-semibold uppercase text-zinc-950">Patient Serial</span>
                             <span className="text-sm font-mono text-zinc-500">#CMD-9823-AQ</span>
                         </div>
                         <div className="grid grid-cols-3 gap-4">
                             <div>
-                                <p className="text-[11px] font-semibold uppercase text-zinc-950 mb-1 tracking-wider">Height</p>
+                                <p className="text-[11px] font-semibold uppercase text-zinc-950 mb-1">Height</p>
                                 <p className="text-xl font-medium">{input.height}cm</p>
                             </div>
                             <div>
-                                <p className="text-[11px] font-semibold uppercase text-zinc-950 mb-1 tracking-wider">Weight</p>
+                                <p className="text-[11px] font-semibold uppercase text-zinc-950 mb-1">Weight</p>
                                 <p className="text-xl font-medium">{input.weight}kg</p>
                             </div>
                             <div>
-                                <p className="text-[11px] font-semibold uppercase text-zinc-950 mb-1 tracking-wider">BMI</p>
+                                <p className="text-[11px] font-semibold uppercase text-zinc-950 mb-1">BMI</p>
                                 <p className="text-xl font-medium">{((input.weight / (input.height / 100) ** 2)).toFixed(1)}</p>
                             </div>
                         </div>
@@ -214,7 +214,7 @@ function AnalysisMetric({ icon: Icon, label, value, status }: { icon: any, label
                 <Icon className="w-7 h-7" strokeWidth={1.5} />
             </div>
             <div className="space-y-1">
-                <p className="text-[11px] font-semibold text-zinc-950 uppercase tracking-wider">{label}</p>
+                <p className="text-[11px] font-semibold text-zinc-950 uppercase">{label}</p>
                 <p className="text-2xl font-medium text-zinc-950">{value}</p>
             </div>
         </div>

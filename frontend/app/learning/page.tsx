@@ -27,7 +27,7 @@ export default function LearningPage() {
             className="space-y-16"
         >
             <section className="space-y-6">
-                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-[11px] font-semibold uppercase tracking-wider">
+                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-[11px] font-semibold uppercase">
                     <Zap className="w-3 h-3" />
                     <span>Educational Insights</span>
                 </motion.div>
@@ -157,7 +157,7 @@ function ArchitectureCard({ icon: Icon, title, tech, desc }: { icon: any, title:
                 </div>
                 <div>
                     <h3 className="font-medium text-zinc-950 leading-tight">{title}</h3>
-                    <p className="text-[11px] font-semibold text-zinc-950 uppercase tracking-wider mt-0.5">{tech}</p>
+                    <p className="text-[11px] font-semibold text-zinc-950 uppercase mt-0.5">{tech}</p>
                 </div>
             </div>
             <p className="text-sm text-zinc-500 leading-relaxed">{desc}</p>

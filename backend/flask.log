@@ -17,3 +17,31 @@ https://scikit-learn.org/stable/model_persistence.html#security-maintainability-
 /home/jay-vegad/Desktop/Cardio_Vascular/backend/venv2/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
   warnings.warn(
 127.0.0.1 - - [01/Mar/2026 09:49:30] "POST /predict HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 10:26:31] "OPTIONS /predict HTTP/1.1" 200 -
+/home/jay-vegad/Desktop/Cardio_Vascular/backend/venv2/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+127.0.0.1 - - [01/Mar/2026 10:26:31] "POST /predict HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 10:26:38] "OPTIONS /predict HTTP/1.1" 200 -
+/home/jay-vegad/Desktop/Cardio_Vascular/backend/venv2/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+127.0.0.1 - - [01/Mar/2026 10:26:38] "POST /predict HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 11:09:58] "OPTIONS /predict HTTP/1.1" 200 -
+/home/jay-vegad/Desktop/Cardio_Vascular/backend/venv2/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+127.0.0.1 - - [01/Mar/2026 11:09:58] "POST /predict HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 11:10:18] "OPTIONS /predict HTTP/1.1" 200 -
+/home/jay-vegad/Desktop/Cardio_Vascular/backend/venv2/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+127.0.0.1 - - [01/Mar/2026 11:10:18] "POST /predict HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 11:10:26] "OPTIONS /predict HTTP/1.1" 200 -
+/home/jay-vegad/Desktop/Cardio_Vascular/backend/venv2/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+127.0.0.1 - - [01/Mar/2026 11:10:26] "POST /predict HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 11:10:39] "OPTIONS /predict HTTP/1.1" 200 -
+/home/jay-vegad/Desktop/Cardio_Vascular/backend/venv2/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+127.0.0.1 - - [01/Mar/2026 11:10:39] "POST /predict HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 11:11:08] "OPTIONS /predict HTTP/1.1" 200 -
+/home/jay-vegad/Desktop/Cardio_Vascular/backend/venv2/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+127.0.0.1 - - [01/Mar/2026 11:11:08] "POST /predict HTTP/1.1" 200 -
