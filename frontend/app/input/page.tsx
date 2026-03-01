@@ -12,7 +12,8 @@ import {
     ChevronDown,
     Calendar,
     HeartPulse,
-    Check
+    Check,
+    Milestone
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -108,7 +109,7 @@ const PatientInput = () => {
     };
 
     return (
-        <div className="min-h-screen relative min-w-7xl">
+        <div className="min-h-screen relative w-full">
 
             <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -117,17 +118,21 @@ const PatientInput = () => {
             >
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-100 pb-12">
                     <div className="space-y-4">
-                        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[11px] font-semibold uppercase">
-                            Patient Intake
-                        </div>
                         <div className="space-y-1">
                             <h1 className="text-5xl font-medium text-zinc-950">CardioML Assessment</h1>
                             <p className="text-zinc-500 text-lg">Stratified physiological parameter serialization powered by over 70,000 clinically annotated records.</p>
                         </div>
                     </div>
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-100 text-zinc-950 text-[11px] uppercase">
-                        <Activity className="w-3.5 h-3.5 text-zinc-950" />
-                        Server is running...
+                    <div className="group relative flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-200 text-zinc-950 text-[11px] uppercase cursor-help transition-colors hover:bg-zinc-100 focus:outline-none" tabIndex={0}>
+                        <div className="size-2 bg-green-500 rounded-full animate-pulse">
+                            <div className="size-2 bg-green-500 rounded-full animate-ping" />
+                        </div>
+                        <span className="text-md">Server is running....</span>
+
+                        <div className="absolute top-[calc(100%+8px)] right-0 w-max opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 bg-zinc-900 text-white font-medium text-[11px] px-3 py-2 rounded-lg shadow-xl z-[100] normal-case tracking-wide cursor-text">
+                            https://mlbackend.jayvegad.xyz
+                            <div className="absolute -top-1 right-5 w-3 h-3 bg-zinc-900 rotate-45 -z-10"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -299,7 +304,7 @@ const PatientInput = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="flex cursor-pointer bg-neutral-900 px-4 py-2 font-medium text-white shadow-[0px_0px_10px_0px_rgba(255,255,255,0.2)_inset] ring ring-white/20 ring-offset-2 ring-offset-neutral-900 transition-all duration-200 ring-inset hover:shadow-[0px_0px_20px_0px_rgba(255,255,255,0.4)_inset] hover:ring-white/40 active:scale-[0.98] dark:bg-white dark:text-black dark:shadow-[0px_0px_10px_0px_rgba(0,0,0,0.2)_inset] dark:ring-black/20 dark:ring-offset-white dark:hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.3)_inset] dark:hover:ring-black/50 h-14 w-full items-center justify-center rounded-lg text-center text-base sm:w-64 mx-auto gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="flex cursor-pointer bg-neutral-900 px-4 py-2 font-medium text-white shadow-[0px_0px_10px_0px_rgba(255,255,255,0.2)_inset] ring ring-white/20 ring-offset-2 ring-offset-neutral-900 transition-all duration-200 ring-inset hover:shadow-[0px_0px_20px_0px_rgba(255,255,255,0.4)_inset] hover:ring-white/40 active:scale-[0.98] dark:bg-white dark:text-black dark:shadow-[0px_0px_10px_0px_rgba(0,0,0,0.2)_inset] dark:ring-black/20 dark:ring-offset-white dark:hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.3)_inset] dark:hover:ring-black/50 h-14 w-full items-center justify-center rounded-lg text-center text-base sm:w-56 mx-auto gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {loading ? (
                                 <span className="flex items-center gap-2">
@@ -310,10 +315,10 @@ const PatientInput = () => {
                                     Analyzing Matrix...
                                 </span>
                             ) : (
-                                <>
-                                    <span className="text-xl ">Evaluate</span>
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                </>
+                                <div className="flex items-center justify-center gap-2">
+                                    <span className="text-xl font-normal">Predict Risk</span>
+                                    <Milestone className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                </div>
                             )}
                         </button>
                         <div className="mt-4 space-y-2">

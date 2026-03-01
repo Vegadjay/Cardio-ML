@@ -78,10 +78,6 @@ export default function Home() {
 
           <motion.div variants={fadeInUp} className="pt-16 border-t border-zinc-100 space-y-8">
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                <h3 className="text-md text-zinc-950">Clinical Stack</h3>
-              </div>
               <div className="w-px h-4 bg-zinc-200" />
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-zinc-950" />
@@ -95,7 +91,7 @@ export default function Home() {
               <InfrastructureCard label="Data" value="NumPy / Pandas" />
               <InfrastructureCard label="Engine" value="Joblib / Gunicorn" />
               <InfrastructureCard label="Production API" value="mlbackend.jayvegad.dev" />
-              <InfrastructureCard label="Edge Interface" value="Vercel Deployment" />
+              <InfrastructureCard label="Deployment" value="Vercel / AWS" />
             </div>
           </motion.div>
         </motion.div>
@@ -150,12 +146,12 @@ function FeatureCard({ icon: Icon, title, description, index }: { icon: any, tit
 function Stat({ value, label, prefix = "", suffix = "" }: { value: number, label: string, prefix?: string, suffix?: string }) {
   return (
     <div className="space-y-2 p-6 rounded-2xl border border-zinc-200 bg-white/50 backdrop-blur-sm shadow-sm transition-all hover:border-amber-200">
-      <div className="text-4xl md:text-6xl font-medium text-zinc-950">
+      <div className="text-4xl md:text-6xl text-zinc-950">
         <span className="text-zinc-300 mr-1">{prefix}</span>
         <NumberTicker value={value} />
         <span className="text-zinc-300 ml-1">{suffix}</span>
       </div>
-      <div className="text-[11px] font-semibold text-zinc-950 uppercase">{label}</div>
+      <div className="text-[11px] text-zinc-950 uppercase">{label}</div>
     </div>
   );
 }

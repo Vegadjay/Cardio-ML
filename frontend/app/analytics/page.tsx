@@ -3,18 +3,13 @@
 import React from "react";
 import { motion } from "motion/react";
 import {
-    BarChart3,
     TrendingUp,
     Users,
     Activity,
     BrainCircuit,
     ArrowUpRight,
     ArrowDownRight,
-    FilePieChart,
-    Search
 } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import {
     BarChart,
     Bar,
@@ -51,10 +46,6 @@ const Analytics = () => {
                         <h1 className="text-5xl font-medium text-zinc-950">System Analytics</h1>
                         <p className="text-zinc-500 text-lg">Historical model performance and longitudinal data distribution metrics.</p>
                     </div>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-amber-600 text-[10px] uppercase">
-                    <BrainCircuit className="w-3.5 h-3.5 text-amber-700" />
-                    XGBoost Ensemble Active
                 </div>
             </div>
 

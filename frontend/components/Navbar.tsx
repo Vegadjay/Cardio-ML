@@ -28,7 +28,7 @@ const Navbar = () => {
                     <span className="font-medium text-xl text-zinc-950">CardioML</span>
                 </Link>
 
-                <div className="flex items-center gap-8">
+                <div className="flex items-center gap-4 md:gap-8 overflow-x-auto no-scrollbar">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
