@@ -17,7 +17,7 @@ const PatientInput = () => {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         age: 50,
-        gender: "2", // 2=Female, 1=Male
+        gender: "2",
         height: 165,
         weight: 65,
         ap_hi: 120,
@@ -70,7 +70,7 @@ const PatientInput = () => {
                 active: formData.active ? 1 : 0
             };
 
-            const API_URL = "http://51.21.170.181:8000";
+            const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:5000";
             const response = await fetch(`${API_URL}/predict`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -230,8 +230,8 @@ const PatientInput = () => {
                                             className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3.5 focus:shadow-inner focus:border-zinc-950 outline-none appearance-none shadow-sm"
                                         >
                                             <option value="1">1: Glycemic Baseline (Normal)</option>
-                                            <option value="2: Above Normal">2: Post-Prandial Elevation</option>
-                                            <option value="3: Critical / Well Above Normal">3: Pathological Hyperglycemia</option>
+                                            <option value="2">2: Post-Prandial Elevation</option>
+                                            <option value="3">3: Pathological Hyperglycemia</option>
                                         </select>
                                     </FormGroup>
                                 </div>

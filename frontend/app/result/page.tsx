@@ -41,7 +41,7 @@ const PredictionResult = () => {
     if (!data) return null;
 
     const { result, input } = data;
-    const probability = result.probability !== undefined ? result.probability * 100 : (result.prediction * 100);
+    const probability = result.risk_score !== undefined ? result.risk_score : (result.prediction * 100);
     const isHighRisk = probability > 50;
 
     return (
@@ -193,8 +193,8 @@ const PredictionResult = () => {
                             <AnalysisMetric
                                 icon={Droplets}
                                 label="Glycemic Variance"
-                                value={input.gluc === "1" ? "Regulated" : "Variant"}
-                                status={input.gluc === "1" ? "success" : "warning"}
+                                value={Number(input.gluc) === 1 ? "Regulated" : "Variant"}
+                                status={Number(input.gluc) === 1 ? "success" : "warning"}
                             />
                         </div>
                     </section>
