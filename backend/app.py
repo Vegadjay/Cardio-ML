@@ -23,53 +23,39 @@ def predict():
     try:
         data = request.json
         print(f"Received prediction request: {data}")
-        
-        age_years = float(data.get('age')) // 365
-        age_scaled = (age_years - 29) / (64 - 29)
 
-        height_raw = float(data.get('height'))
-        height_scaled = (height_raw - 55) / (250 - 55)
+        height = float(data.get('height'))
+        weight = float(data.get('weight'))
 
-        weight_kg = float(data.get('weight'))
-        weight_scaled = (weight_kg - 10.0) / (200.0 - 10.0)
-
-        height_m = height_raw / 100
-        bmi = weight_kg / (height_m ** 2) if height_m > 0 else 0
-
-        ap_hi_scaled = (float(data.get('ap_hi')) - (-150)) / (16020 - (-150))
-        ap_lo_scaled = (float(data.get('ap_lo')) - (-70)) / (11000 - (-70))
-        
-        cholesterol_scaled = (float(data.get('cholesterol')) - 1) / 2
-        gluc_scaled = (float(data.get('gluc')) - 1) / 2
+        height_m = height / 100
+        bmi = weight / (height_m ** 2) if height_m > 0 else 0
 
         features = [
-            age_scaled,
+            float(data.get('age')),      # age in days
             float(data.get('gender')),
-            height_scaled,
-            weight_scaled,
-            ap_hi_scaled,
-            ap_lo_scaled,
-            cholesterol_scaled,
-            gluc_scaled,
+            height,
+            weight,
+            float(data.get('ap_hi')),
+            float(data.get('ap_lo')),
+            float(data.get('cholesterol')),
+            float(data.get('gluc')),
             float(data.get('smoke')),
             float(data.get('alco')),
             float(data.get('active')),
-            float(bmi)
+            bmi
         ]
 
         input_data = np.array(features).reshape(1, -1)
-        data_scaled = scaler.transform(input_data)
-        
-        prediction = model.predict(data_scaled)[0]
-        
-        result = {
-            "prediction": int(prediction),
-            "risk_score": int(prediction * 100)
-        }
 
-        # Try to get probability if possible
-        if hasattr(model, "predict_proba"):
-             result["risk_score"] = int(model.predict_proba(data_scaled)[0][1] * 100)
+        # ONLY scale here
+        data_scaled = scaler.transform(input_data)
+
+        prob = model.predict_proba(data_scaled)[0][1]
+
+        result = {
+            "prediction": int(prob > 0.5),
+            "risk_score": round(prob * 100, 2)
+        }
 
         print(f"Prediction result: {result}")
         return jsonify(result)
